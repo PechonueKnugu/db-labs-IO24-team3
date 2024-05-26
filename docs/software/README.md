@@ -5,6 +5,7 @@
 
 ```sql
 
+
 -- MySQL Workbench Forward Engineering
 
 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
@@ -217,6 +218,7 @@ INSERT INTO `mydb`.`requestResult` (`id`,`description`, `rating`, `request_id`, 
 
 COMMIT;
 
+
 ```
 
 - RESTfull сервіс для управління даними
@@ -246,7 +248,7 @@ class DataBase(object):
             host='localhost',
             port=3306,
             user='root',
-            password='password123',
+            password='MySQL_2024',
             database='mydb',
         )
         self.cursor = self.connection.cursor(pymysql.cursors.DictCursor)
