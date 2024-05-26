@@ -223,7 +223,7 @@ COMMIT;
 
 - RESTfull сервіс для управління даними
 
-```
+```python
 import fastapi
 from fastapi import FastAPI, Request
 from fastapi.responses import JSONResponse
