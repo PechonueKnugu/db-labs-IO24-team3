@@ -229,22 +229,31 @@ class DataBase(object):
         return result
 
 
-@app.get("/api/allusers")
-async def get_users():
-    db = DataBase()
-    return JSONResponse(db.execute('SELECT * FROM user'))
-
-
 @app.get("/api/allrequest")
-async def get_users():
+async def get_request():
     db = DataBase()
     return JSONResponse(db.execute('SELECT * FROM request'))
+
+
+@app.get("/api/allmedia")
+async def get_media():
+    db = DataBase()
+    return JSONResponse(db.execute('SELECT * FROM media'))
 
 
 @app.get('/api/user/{id}')
 def get_user_by_id(id):
     db = DataBase()
     result = db.execute(f'SELECT * FROM user WHERE id={id}')
+    if not result:
+        raise fastapi.HTTPException(status_code=404)
+    return JSONResponse(result)
+
+
+@app.get('/api/media/{id}')
+def get_media_by_id(id):
+    db = DataBase()
+    result = db.execute(f'SELECT * FROM media WHERE id={id}')
     if not result:
         raise fastapi.HTTPException(status_code=404)
     return JSONResponse(result)
@@ -275,24 +284,24 @@ async def add_new_request(req: Request):
     return {'message': 'New request added!'}
 
 
-@app.put('/api/updateuser/{id}')
-async def update_user(id, req: Request):
+@app.put('/api/updatemedia/{id}')
+async def update_media(id, req: Request):
     req_dict = await req.json()
     db = DataBase()
     for key in req_dict:
-        if not db.execute(f'SELECT * FROM user WHERE id={id}'):
+        if not db.execute(f'SELECT * FROM media WHERE id={id}'):
             raise fastapi.HTTPException(status_code=404)
-        db.execute(f"UPDATE user SET {key}='{req_dict[key]}' WHERE id={id}")
-    return {"message": 'Updated!'}
+        db.execute(f"UPDATE media SET {key}='{req_dict[key]}' WHERE id={id}")
+    return {"message": f'Media {id} was successfully updated!'}
 
 
-@app.delete('/api/deleteuser/{id}')
-def delete(id):
+@app.delete('/api/deletemedia/{id}')
+def delete_media(id):
     db = DataBase()
-    if not db.execute(f'SELECT * FROM user WHERE id={id}'):
+    if not db.execute(f'SELECT * FROM media WHERE id={id}'):
         raise fastapi.HTTPException(status_code=404)
-    db.execute(f"DELETE FROM `user` WHERE id={id}")
-    return {'message': f'User with id={id} deleted'}
+    db.execute(f"DELETE FROM `media` WHERE id={id}")
+    return {'message': f'Media with id {id} has been deleted'}
 
 ```
 
