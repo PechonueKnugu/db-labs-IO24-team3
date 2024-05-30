@@ -197,8 +197,8 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `mydb`;
-INSERT INTO `mydb`.`request` (`id`, `name`, `description`, `created`, `media_id`, `user_id`) VALUES (1, 'Text search', 'desc', '2024-05-18', 1,1);
-INSERT INTO `mydb`.`request` (`id`, `name`, `description`, `created`,`media_id`, `user_id`) VALUES (2, 'Video search', 'desc', '2024-05-18', 2,2);
+INSERT INTO `mydb`.`request` (`id`, `name`, `description`, `created`, `media_id`, `user_id`) VALUES (1, 'Text search', 'desc', '2024-05-30', 1,1);
+INSERT INTO `mydb`.`request` (`id`, `name`, `description`, `created`,`media_id`, `user_id`) VALUES (2, 'Video search', 'desc', '2024-05-30', 2,2);
 
 
 COMMIT;
