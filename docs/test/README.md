@@ -3,39 +3,30 @@
 ## Тестування REST API
 
 ### GET
-
-#### Пошук 
-![alt text](./images/user_id.png)
+ 
+![alt text](./images/get_user.png)
 
 
 ### POST 
-#### Перед запитом
-![alt text](./images/allrequest.png)
 
-#### Запит
-![alt text](./images/addrequest.png)
+![alt text](./images/all_request.png)
 
-#### Після запиту
-![alt text](./images/allrequestafter.png)
+![alt text](./images/add_request.png)
+
+![alt text](./images/allrequest2.png)
 
 ### PUT
 
-#### Перед запитом
-![alt text](./images/allusers.png)
+![alt text](./images/get_media.png)
 
-#### Запит
-![alt text](./images/updateuser.png)
+![alt text](./images/media_update.png)
 
-#### Після запиту
-![alt text](./images/allusersafter.png)
+![alt text](./images/get_media2.png)
 
 ### DELETE
 
-#### Перед запитом
-![alt text](./images/allusersafter.png)
+![alt text](./images/all_media.png)
 
-#### Запит
-![alt text](./images/deleteuser.png)
+![alt text](./images/deleted_media.png)
 
-#### Після запиту
-![alt text](./images/allusersafter2.png)
+![alt text](./images/all_media.png)
