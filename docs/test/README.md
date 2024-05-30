@@ -29,4 +29,4 @@
 
 ![alt text](./images/deleted_media.png)
 
-![alt text](./images/all_media.png)
+![alt text](./images/all_media2.png)
