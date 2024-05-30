@@ -5,7 +5,7 @@
 ### GET
 
 #### Пошук 
-![alt text](./images/userid.png)
+![alt text](./images/user_id.png)
 
 
 ### POST 
