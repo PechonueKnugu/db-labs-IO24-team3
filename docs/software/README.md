@@ -4,7 +4,6 @@
 - SQL-скрипт для створення на початкового наповнення бази даних
 
 ```sql
-
 -- MySQL Workbench Forward Engineering
 
 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
@@ -34,12 +33,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`role` (
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
-START TRANSACTION;
-USE `mydb`;
-INSERT INTO `mydb`.`role` (`id`,`name`,`description`) VALUES (1, 'user', 'desc1');
-INSERT INTO `mydb`.`role` (`id`,`name`,`description`) VALUES (2, 'admin', 'desc2');
 
-COMMIT;
 -- -----------------------------------------------------
 -- Table `mydb`.`user`
 -- -----------------------------------------------------
@@ -61,13 +55,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`user` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-START TRANSACTION;
-USE `mydb`;
-INSERT INTO `mydb`.`user` (`id`, `name`, `login`, `password`, `email`, `role_id`) VALUES (1, 'name1', 'login1', 'password1', 'email1@gmail.com', 1);
-INSERT INTO `mydb`.`user` (`id`, `name`, `login`, `password`, `email`, `role_id`) VALUES (2, 'name2', 'login2', 'password2', 'email1@gmail.com', 1);
-INSERT INTO `mydb`.`user` (`id`, `name`, `login`, `password`, `email`, `role_id`) VALUES (3, 'name3', 'login3', 'password3', 'email1@gmail.com', 1);
 
-COMMIT;
 -- -----------------------------------------------------
 -- Table `mydb`.`originalSource`
 -- -----------------------------------------------------
@@ -82,12 +70,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`originalSource` (
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
-START TRANSACTION;
-USE `mydb`;
-INSERT INTO `mydb`.`originalSource` (`id`,`name`,`type`,`url`,`rating`) VALUES (1, 'name1','type1','url1',NULL);
-INSERT INTO `mydb`.`originalSource` (`id`,`name`,`type`,`url`,`rating`) VALUES (2, 'name2','type2','url2',NULL);
 
-COMMIT;
 -- -----------------------------------------------------
 -- Table `mydb`.`media`
 -- -----------------------------------------------------
@@ -109,12 +92,6 @@ CREATE TABLE IF NOT EXISTS `mydb`.`media` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-START TRANSACTION;
-USE `mydb`;
-INSERT INTO `mydb`.`media` (`id`,`name`,`type`,`url`,`metadata`,`originalSource_id`) VALUES (1, 'name1','type1','url1','metadata1',1);
-INSERT INTO `mydb`.`media` (`id`,`name`,`type`,`url`,`metadata`,`originalSource_id`) VALUES (2,  'name2','type2','url2','metadata2',1);
-
-COMMIT;
 
 -- -----------------------------------------------------
 -- Table `mydb`.`request`
@@ -143,13 +120,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`request` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-START TRANSACTION;
-USE `mydb`;
-INSERT INTO `mydb`.`request` (`id`, `name`, `description`, `created`, `media_id`, `user_id`) VALUES (1, 'Text search', 'desc', '2024-05-30', 1,1);
-INSERT INTO `mydb`.`request` (`id`, `name`, `description`, `created`,`media_id`, `user_id`) VALUES (2, 'Video search', 'desc', '2024-05-30', 2,2);
 
-
-COMMIT;
 -- -----------------------------------------------------
 -- Table `mydb`.`requestResult`
 -- -----------------------------------------------------
@@ -176,18 +147,74 @@ CREATE TABLE IF NOT EXISTS `mydb`.`requestResult` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-START TRANSACTION;
-USE `mydb`;
-INSERT INTO `mydb`.`requestResult` (`id`,`description`, `rating`, `request_id`, `user_id`) VALUES (1, 'desc1', 'rait1',1,1);
-INSERT INTO `mydb`.`requestResult` (`id`,`description`, `rating`, `request_id`, `user_id`) VALUES (2, 'desc2', 'rait2', 2,2);
-
-COMMIT;
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
 
+-- -----------------------------------------------------
+-- Data for table `mydb`.`role`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `mydb`;
+INSERT INTO `mydb`.`role` (`id`,`name`,`description`) VALUES (1, 'user', 'desc1');
+INSERT INTO `mydb`.`role` (`id`,`name`,`description`) VALUES (2, 'admin', 'desc2');
+
+COMMIT;
+
+-- -----------------------------------------------------
+-- Data for table `mydb`.`user`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `mydb`;
+INSERT INTO `mydb`.`user` (`id`, `name`, `login`, `password`, `email`, `role_id`) VALUES (1, 'name1', 'login1', 'password1', 'email1@gmail.com', 1);
+INSERT INTO `mydb`.`user` (`id`, `name`, `login`, `password`, `email`, `role_id`) VALUES (2, 'name2', 'login2', 'password2', 'email1@gmail.com', 1);
+INSERT INTO `mydb`.`user` (`id`, `name`, `login`, `password`, `email`, `role_id`) VALUES (3, 'name3', 'login3', 'password3', 'email1@gmail.com', 1);
+
+COMMIT;
+
+-- -----------------------------------------------------
+-- Data for table `mydb`.`originalSource_id`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `mydb`;
+INSERT INTO `mydb`.`originalSource` (`id`,`name`,`type`,`url`,`rating`) VALUES (1, 'name1','type1','url1',NULL);
+INSERT INTO `mydb`.`originalSource` (`id`,`name`,`type`,`url`,`rating`) VALUES (2, 'name2','type2','url2',NULL);
+
+COMMIT;
+
+-- -----------------------------------------------------
+-- Data for table `mydb`.`meida`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `mydb`;
+INSERT INTO `mydb`.`media` (`id`,`name`,`type`,`url`,`metadata`,`originalSource_id`) VALUES (1, 'name1','type1','url1','metadata1',1);
+INSERT INTO `mydb`.`media` (`id`,`name`,`type`,`url`,`metadata`,`originalSource_id`) VALUES (2,  'name2','type2','url2','metadata2',1);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `mydb`.`request`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `mydb`;
+INSERT INTO `mydb`.`request` (`id`, `name`, `description`, `created`, `media_id`, `user_id`) VALUES (1, 'Text search', 'desc', '2024-05-30', 1,1);
+INSERT INTO `mydb`.`request` (`id`, `name`, `description`, `created`,`media_id`, `user_id`) VALUES (2, 'Video search', 'desc', '2024-05-30', 2,2);
+
+
+COMMIT;
+
+-- -----------------------------------------------------
+-- Data for table `mydb`.`requestResult`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `mydb`;
+INSERT INTO `mydb`.`requestResult` (`id`,`description`, `rating`, `request_id`, `user_id`) VALUES (1, 'desc1', 'rait1',1,1);
+INSERT INTO `mydb`.`requestResult` (`id`,`description`, `rating`, `request_id`, `user_id`) VALUES (2, 'desc2', 'rait2', 2,2);
+
+COMMIT;
 ```
 
 - RESTfull сервіс для управління даними
