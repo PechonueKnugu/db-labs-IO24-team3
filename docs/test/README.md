@@ -13,7 +13,7 @@
 
 ![alt text](./images/add_request.png)
 
-![alt text](./images/allrequest2.png)
+![alt text](./images/all_request2.png)
 
 ### PUT
 
